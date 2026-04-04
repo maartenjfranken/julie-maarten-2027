@@ -1,0 +1,1423 @@
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  Julie & Maarten — Wedding Website                          ║
+  ║  5 juni 2027 · Villa Pizzo dell'Ovo, Patti, Sicilië         ║
+  ╠══════════════════════════════════════════════════════════════╣
+  ║                                                              ║
+  ║  DEPLOY TO GITHUB PAGES:                                     ║
+  ║  1. Create a new GitHub repo (e.g. "julie-maarten-wedding")  ║
+  ║  2. Upload this file as index.html to the repo root          ║
+  ║  3. Go to Settings → Pages → Source: main branch → Save      ║
+  ║  4. Your site will be live at:                               ║
+  ║     https://<username>.github.io/julie-maarten-wedding/      ║
+  ║                                                              ║
+  ║  RSVP FORM SETUP (Formspree):                                ║
+  ║  1. Sign up free at https://formspree.io                     ║
+  ║  2. Create a new form and copy your form endpoint ID          ║
+  ║  3. Replace YOUR_FORMSPREE_ID in the <form> action below     ║
+  ║     with your actual endpoint (e.g. "xpznqklv")             ║
+  ║  4. Submissions will be emailed to your Formspree account    ║
+  ║                                                              ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julie & Maarten · 5 Juni 2027 · Sicilië</title>
+  <meta name="description" content="Julie en Maarten trouwen op 5 juni 2027 in Villa Pizzo dell'Ovo, Patti, Sicilië.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════
+       CSS VARIABLES & RESET
+    ═══════════════════════════════════════ */
+    :root {
+      --ivory: #FAF7F2;
+      --cream: #F3EDE4;
+      --sand: #D9CFC1;
+      --sand-light: #E8E0D4;
+      --sage: #8A9A7B;
+      --sage-deep: #6B7E5E;
+      --sage-light: #B5C4A8;
+      --terracotta: #C4785C;
+      --terracotta-light: #D4977F;
+      --terracotta-deep: #A85F44;
+      --gold: #B8975A;
+      --gold-light: #D4BA82;
+      --charcoal: #3A3632;
+      --warm-gray: #6B6560;
+      --warm-gray-light: #9B9590;
+
+      --font-display: 'Cormorant Garamond', 'Georgia', serif;
+      --font-body: 'Lora', 'Georgia', serif;
+      --font-sans: 'Josefin Sans', 'Helvetica Neue', sans-serif;
+
+      --nav-height: 72px;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--charcoal);
+      background: var(--ivory);
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ═══════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2rem;
+      transition: background 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(250, 247, 242, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      transition: color 0.4s ease, opacity 0.3s ease;
+      opacity: 0.9;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--gold-light);
+    }
+
+    .nav.scrolled .nav-links a {
+      color: var(--charcoal);
+    }
+
+    .nav.scrolled .nav-links a:hover {
+      color: var(--terracotta);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.05em;
+      color: #fff;
+      transition: color 0.4s ease;
+    }
+
+    .nav.scrolled .nav-logo {
+      color: var(--charcoal);
+    }
+
+    .nav-divider {
+      width: 1px;
+      height: 16px;
+      background: rgba(255,255,255,0.3);
+      transition: background 0.4s ease;
+    }
+
+    .nav.scrolled .nav-divider {
+      background: rgba(0,0,0,0.12);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      position: absolute;
+      right: 1.5rem;
+      z-index: 1001;
+      background: none;
+      border: none;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .nav.scrolled .hamburger span {
+      background: var(--charcoal);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(4px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(4px, -5px);
+    }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(250, 247, 242, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .mobile-nav.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-nav a {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--terracotta);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav { display: flex; }
+    }
+
+    /* ═══════════════════════════════════════
+       HERO SECTION
+    ═══════════════════════════════════════ */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url('https://images.unsplash.com/photo-1664286244787-afdf4224e65f?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+        center/cover no-repeat;
+      filter: brightness(0.65) saturate(1.1);
+      transform: scale(1.05);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.05); }
+      to { transform: scale(1.12); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(58, 54, 50, 0.15) 0%,
+        rgba(58, 54, 50, 0.05) 40%,
+        rgba(58, 54, 50, 0.35) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      padding: 0 2rem;
+    }
+
+    .hero-date {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 0.3s forwards;
+    }
+
+    .hero-names {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 0.6s forwards;
+    }
+
+    .hero-names .amp {
+      font-style: italic;
+      font-weight: 300;
+      display: inline-block;
+      margin: 0 0.15em;
+      font-size: 0.8em;
+      vertical-align: 0.05em;
+    }
+
+    .hero-venue {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 0.9s forwards;
+    }
+
+    .hero-ornament {
+      width: 60px;
+      height: 1px;
+      background: rgba(255,255,255,0.4);
+      margin: 1.8rem auto;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 0.75s forwards;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 1.4s forwards;
+    }
+
+    .scroll-indicator span {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 1px solid rgba(255,255,255,0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+      transform: rotate(45deg);
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(6px); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ═══════════════════════════════════════
+       GENERAL SECTION STYLES
+    ═══════════════════════════════════════ */
+    .section {
+      padding: 6rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section-wide {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      text-align: center;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 400;
+      text-align: center;
+      color: var(--warm-gray);
+      max-width: 550px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+
+    .ornament {
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem auto 2.5rem;
+    }
+
+    /* ═══════════════════════════════════════
+       WELCOME / OUR STORY
+    ═══════════════════════════════════════ */
+    .welcome {
+      background: var(--ivory);
+      text-align: center;
+    }
+
+    .welcome-text {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      line-height: 2;
+      color: var(--warm-gray);
+      max-width: 620px;
+      margin: 0 auto;
+      font-style: italic;
+    }
+
+    .welcome-text p + p {
+      margin-top: 1.2rem;
+    }
+
+    /* ═══════════════════════════════════════
+       IMAGE DIVIDERS
+    ═══════════════════════════════════════ */
+    .img-divider {
+      width: 100%;
+      height: 45vh;
+      min-height: 300px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .img-divider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .img-divider::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(250,247,242,0.05) 0%,
+        rgba(250,247,242,0) 20%,
+        rgba(250,247,242,0) 80%,
+        rgba(250,247,242,0.05) 100%
+      );
+    }
+
+    /* ═══════════════════════════════════════
+       THE WEEKEND PROGRAMME
+    ═══════════════════════════════════════ */
+    .programme {
+      background: var(--cream);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 32px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--sand);
+    }
+
+    .day-card {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 1.5rem;
+      padding: 2.5rem 0;
+      position: relative;
+    }
+
+    .day-card + .day-card {
+      border-top: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .day-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--ivory);
+      border: 1px solid var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--terracotta);
+      position: relative;
+      z-index: 1;
+    }
+
+    .day-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.2rem;
+    }
+
+    .day-content .day-date {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.8rem;
+    }
+
+    .day-content p {
+      font-size: 0.95rem;
+      color: var(--warm-gray);
+      line-height: 1.8;
+    }
+
+    .day-content .event-list {
+      list-style: none;
+      margin-top: 0.8rem;
+    }
+
+    .day-content .event-list li {
+      font-size: 0.92rem;
+      color: var(--warm-gray);
+      padding: 0.3rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .day-content .event-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--sage);
+    }
+
+    .day-content .event-list li strong {
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      .timeline::before { left: 24px; }
+      .day-card { grid-template-columns: 48px 1fr; gap: 1rem; }
+      .day-icon { width: 48px; height: 48px; font-size: 1.1rem; }
+    }
+
+    /* ═══════════════════════════════════════
+       THE VENUE
+    ═══════════════════════════════════════ */
+    .venue {
+      background: var(--ivory);
+    }
+
+    .venue-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2.5rem auto 2rem;
+      max-width: 900px;
+    }
+
+    .venue-grid .venue-img-main {
+      grid-column: 1 / -1;
+      height: 400px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .venue-grid .venue-img {
+      height: 280px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .venue-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .venue-grid img:hover {
+      transform: scale(1.03);
+    }
+
+    .venue-desc {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: 1rem;
+      color: var(--warm-gray);
+      line-height: 1.9;
+    }
+
+    .venue-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      border-bottom: 1px solid var(--terracotta-light);
+      padding-bottom: 2px;
+      transition: all 0.3s;
+    }
+
+    .venue-link:hover {
+      color: var(--terracotta-deep);
+      border-color: var(--terracotta-deep);
+    }
+
+    @media (max-width: 600px) {
+      .venue-grid { grid-template-columns: 1fr; }
+      .venue-grid .venue-img-main { height: 260px; }
+      .venue-grid .venue-img { height: 220px; }
+    }
+
+    /* ═══════════════════════════════════════
+       PHOTO GALLERY
+    ═══════════════════════════════════════ */
+    .gallery {
+      background: var(--cream);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 0.6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 3px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease, filter 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(1.05);
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(58,54,50,0.08);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+      background: rgba(58,54,50,0);
+    }
+
+    /* Span variations for masonry-like effect */
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .gallery-item:nth-child(4) { grid-row: span 2; }
+    .gallery-item:nth-child(7) { grid-column: span 2; }
+    .gallery-item:nth-child(9) { grid-column: span 2; grid-row: span 2; }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+      }
+      .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+      .gallery-item:nth-child(4) { grid-row: span 1; }
+      .gallery-item:nth-child(7) { grid-column: span 1; }
+      .gallery-item:nth-child(9) { grid-column: span 2; grid-row: span 1; }
+    }
+
+    .gallery-caption {
+      text-align: center;
+      margin-top: 2rem;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--warm-gray-light);
+    }
+
+    /* ═══════════════════════════════════════
+       TRAVEL & PRACTICAL INFO
+    ═══════════════════════════════════════ */
+    .travel {
+      background: var(--ivory);
+    }
+
+    .travel-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .travel-card {
+      background: var(--cream);
+      padding: 2rem;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .travel-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.6rem;
+    }
+
+    .travel-card p {
+      font-size: 0.92rem;
+      color: var(--warm-gray);
+      line-height: 1.8;
+    }
+
+    .travel-card .airport-code {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--terracotta);
+    }
+
+    .map-container {
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+      height: 320px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    @media (max-width: 600px) {
+      .travel-cards { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════ */
+    .faq {
+      background: var(--cream);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--ivory);
+      padding: 1.8rem 2rem;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .faq-item h4 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: var(--warm-gray);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 700px) {
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════
+       RSVP
+    ═══════════════════════════════════════ */
+    .rsvp {
+      background: var(--ivory);
+      position: relative;
+    }
+
+    .rsvp-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background:
+        url('https://images.unsplash.com/photo-1664286244787-afdf4224e65f?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+        center/cover no-repeat;
+    }
+
+    .rsvp .section-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .rsvp-form {
+      max-width: 520px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--sand);
+      border-radius: 3px;
+      background: #fff;
+      color: var(--charcoal);
+      transition: border-color 0.3s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--sage);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 1.5rem;
+      padding-top: 0.3rem;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .radio-option input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--sand);
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .radio-option input[type="radio"]:checked {
+      border-color: var(--sage-deep);
+    }
+
+    .radio-option input[type="radio"]:checked::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      background: var(--sage-deep);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .radio-option span {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--charcoal);
+    }
+
+    .submit-btn {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--sage-deep);
+      border: none;
+      padding: 1.1rem 2.5rem;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      margin-top: 0.5rem;
+      align-self: center;
+    }
+
+    .submit-btn:hover {
+      background: var(--sage);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(107, 126, 94, 0.25);
+    }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    .footer {
+      text-align: center;
+      padding: 3.5rem 2rem;
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-names {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-info {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .footer-heart {
+      display: inline-block;
+      color: var(--terracotta-light);
+      margin: 0 0.3rem;
+      font-style: normal;
+    }
+
+    /* ═══════════════════════════════════════
+       SCROLL REVEAL ANIMATIONS
+    ═══════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE POLISH
+    ═══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .section { padding: 4rem 1.5rem; }
+      .hero-names { letter-spacing: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+  <nav class="nav" id="navbar">
+    <ul class="nav-links">
+      <li><a href="#welkom">Welkom</a></li>
+      <li><a href="#weekend">Het Weekend</a></li>
+      <li class="nav-divider"></li>
+      <li><a href="#" class="nav-logo">J & M</a></li>
+      <li class="nav-divider"></li>
+      <li><a href="#locatie">Locatie</a></li>
+      <li><a href="#reizen">Reizen</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#welkom">Welkom</a>
+    <a href="#weekend">Het Weekend</a>
+    <a href="#locatie">Locatie</a>
+    <a href="#reizen">Reizen</a>
+    <a href="#faq">FAQ</a>
+    <a href="#rsvp">RSVP</a>
+  </div>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-date">5 juni 2027</p>
+      <h1 class="hero-names">Julie <span class="amp">&</span> Maarten</h1>
+      <div class="hero-ornament"></div>
+      <p class="hero-venue">Villa Pizzo dell'Ovo · Patti, Sicilië</p>
+    </div>
+    <div class="scroll-indicator">
+      <span>Ontdek meer</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ WELKOM ═══════════════════ -->
+  <section class="section welcome" id="welkom">
+    <div class="section-inner reveal">
+      <p class="section-label">Welkom</p>
+      <h2 class="section-title">Wat fijn dat jullie er zijn</h2>
+      <span class="ornament"></span>
+      <div class="welcome-text">
+        <p>Lieve vrienden en familie — wij kunnen niet wachten om samen met jullie ons geluk te vieren op de mooiste plek die we kennen. Vier dagen lang verblijven we met z'n 28-en in een prachtige villa op Sicilië, omringd door olijfbomen, met de zee aan onze voeten.</p>
+        <p>Geen haast, geen drukte — gewoon de mensen die ons het dierbaarst zijn, samen aan lange tafels in de Siciliaanse zon. Dit wordt het mooiste feest van ons leven, en het betekent alles dat jullie erbij zijn.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ IMAGE DIVIDER ═══════════ -->
+  <div class="img-divider">
+    <img src="https://images.unsplash.com/photo-1683267819645-f2c6c505619f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Siciliaans landschap met olijfbomen" loading="lazy">
+  </div>
+
+  <!-- ═══════════════════ HET WEEKEND ═══════════════════ -->
+  <section class="section programme" id="weekend">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">Het Programma</p>
+        <h2 class="section-title">Ons Weekend in Sicilië</h2>
+        <span class="ornament"></span>
+      </div>
+
+      <div class="timeline reveal">
+        <!-- Thursday -->
+        <div class="day-card">
+          <div class="day-icon">Do</div>
+          <div class="day-content">
+            <h3>Aankomst</h3>
+            <p class="day-date">Donderdag 3 juni</p>
+            <p>Welkom in Sicilië! Reis op jullie gemak naar de villa, kies je kamer, en installeer je. 's Avonds komen we voor het eerst allemaal samen — gewoon relaxed, met een drankje en de ondergaande zon.</p>
+          </div>
+        </div>
+
+        <!-- Friday -->
+        <div class="day-card">
+          <div class="day-icon">Vr</div>
+          <div class="day-content">
+            <h3>Vrije Dag</h3>
+            <p class="day-date">Vrijdag 4 juni</p>
+            <p>Een dag helemaal voor jullie. Ontdek de omgeving, duik in het zwembad, maak een wandeling langs de kust, of doe helemaal niets op het terras met een goed boek en een espresso. Geniet van Sicilië op je eigen tempo.</p>
+          </div>
+        </div>
+
+        <!-- Saturday -->
+        <div class="day-card">
+          <div class="day-icon">Za</div>
+          <div class="day-content">
+            <h3>De Grote Dag</h3>
+            <p class="day-date">Zaterdag 5 juni</p>
+            <p>De dag waar alles om draait — ons huwelijk!</p>
+            <ul class="event-list">
+              <li><strong>Late ochtend</strong> — Ceremonie in de tuinen van de villa</li>
+              <li><strong>13:00 – 16:00</strong> — Feestelijk lunch aan lange tafels</li>
+              <li><strong>16:00 – laat</strong> — Drankjes, dans en live muziek</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sunday -->
+        <div class="day-card">
+          <div class="day-icon">Zo</div>
+          <div class="day-content">
+            <h3>Tot Ziens</h3>
+            <p class="day-date">Zondag 6 juni</p>
+            <p>We nemen afscheid — maar niet voordat we samen nog een laatste keer ontbijten. Veilige thuisreis, en bedankt dat jullie dit onvergetelijke weekend met ons hebben gedeeld.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ LOCATIE ═══════════════════ -->
+  <section class="section venue" id="locatie">
+    <div class="section-wide">
+      <div class="reveal">
+        <p class="section-label">De Locatie</p>
+        <h2 class="section-title">Villa Pizzo dell'Ovo</h2>
+        <span class="ornament"></span>
+        <p class="venue-desc">
+          Verscholen aan de kust van Patti ligt Villa Pizzo dell'Ovo — een adembenemende privévilla met uitzicht over de Tyrrheense Zee. Met weelderige mediterrane tuinen, stenen terrassen en ruimte voor ons allemaal, is dit de perfecte plek om samen te vieren. Alle 28 gasten verblijven in de villa, van donderdag tot en met zondag.
+        </p>
+      </div>
+
+      <div class="venue-grid reveal">
+        <div class="venue-img-main">
+          <img src="https://www.wishsicily.com/storage/buildings/imported/villas-in-sicily_275_577_28245_normal.jpg" alt="Mediterrane villa met zeezicht" loading="lazy">
+        </div>
+        <div class="venue-img">
+          <img src="https://www.wishsicily.com/storage/buildings/imported/villas-in-sicily_patti_570_31099_2.jpg" alt="Villa terras bij zonsondergang" loading="lazy">
+        </div>
+        <div class="venue-img">
+          <img src="https://www.wishsicily.com/storage/buildings/imported/_am_9235_562_570_32419.jpg" alt="Mediterrane tuin" loading="lazy">
+        </div>
+      </div>
+
+      <div class="reveal" style="text-align:center;">
+        <a href="https://www.wishsicily.com/en/patti/villas-in-sicily/pizzo-dellovo" target="_blank" rel="noopener" class="venue-link">Bekijk de villa →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ IMAGE DIVIDER ═══════════ -->
+  <div class="img-divider">
+    <img src="https://www.wishsicily.com/blog/wp-content/uploads/2020/08/pizzo-dell-ovo-dionisio-wish-sicily-1024x284.jpg" alt="Siciliaanse kustlijn bij zonsondergang" loading="lazy">
+  </div>
+
+
+  <!-- ═══════════════════ REIZEN ═══════════════════ -->
+  <section class="section travel" id="reizen">
+    <div class="section-wide">
+      <div class="reveal">
+        <p class="section-label">Praktisch</p>
+        <h2 class="section-title">Reizen & Verblijf</h2>
+        <span class="ornament"></span>
+        <p class="section-subtitle">
+          De accommodatie in de villa is voor iedereen geregeld — van donderdag tot en met zondag. Vluchten en vervoer naar de villa regelen jullie zelf.
+        </p>
+      </div>
+
+      <div class="travel-cards reveal">
+        <div class="travel-card">
+          <h4>Vliegveld Catania</h4>
+          <p class="airport-code">CTA · Fontanarossa</p>
+          <p style="margin-top:0.6rem;">Circa 2 uur rijden naar de villa. De meeste vluchten vanuit Nederland landen hier. Huurauto of transfer beschikbaar.</p>
+        </div>
+        <div class="travel-card">
+          <h4>Vliegveld Palermo</h4>
+          <p class="airport-code">PMO · Falcone-Borsellino</p>
+          <p style="margin-top:0.6rem;">Circa 2,5 uur rijden. Een mooie route langs de noordkust van Sicilië. Ideaal te combineren met een extra dag verkennen.</p>
+        </div>
+        <div class="travel-card">
+          <h4>Verblijf</h4>
+          <p style="margin-top:0.3rem;">Alle gasten verblijven samen in Villa Pizzo dell'Ovo. De kamers worden vooraf verdeeld — jullie hoeven niets te regelen.</p>
+        </div>
+        <div class="travel-card">
+          <h4>Adres</h4>
+          <p style="margin-top:0.3rem;">Villa Pizzo dell'Ovo<br>Contrada Pizzo dell'Ovo<br>98066 Patti (ME), Sicilië, Italië</p>
+        </div>
+      </div>
+
+      <div class="map-container reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12500!2d14.9630!3d38.1390!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13168f9b4d5c2d35%3A0x0!2sPatti%2C%20ME%2C%20Italy!5e0!3m2!1snl!2snl!4v1"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Locatie villa op kaart">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FAQ ═══════════════════ -->
+  <section class="section faq" id="faq">
+    <div class="section-wide">
+      <div class="reveal">
+        <p class="section-label">Goed om te weten</p>
+        <h2 class="section-title">Veelgestelde Vragen</h2>
+        <span class="ornament"></span>
+      </div>
+
+      <div class="faq-grid reveal">
+        <div class="faq-item">
+          <h4>Dresscode</h4>
+          <p><strong>Summer Chic</strong> — denk aan een elegant zomertuinfeest. Linnen pakken, luchtige midi-jurken, lichte pasteltinten of creatieve cocktailstijl. Stijlvol maar relaxed.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Weer</h4>
+          <p>Begin juni is het heerlijk op Sicilië — verwacht 23 tot 28°C, volop zon en lange, warme avonden. Vergeet je zonnebrand niet!</p>
+        </div>
+        <div class="faq-item">
+          <h4>Overnachting</h4>
+          <p>Alle gasten slapen in de villa, van donderdag 3 t/m zondag 6 juni. Dit is inbegrepen — jullie hoeven niets te boeken.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Eten & Drinken</h4>
+          <p>Op de trouwdag is alles geregeld: een feestelijke Siciliaanse lunch en drankjes tot in de late uurtjes. Geef dieetwensen door via het RSVP-formulier.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Kinderen</h4>
+          <p>We vieren dit feest graag alleen met volwassenen. We hopen op jullie begrip — zo wordt het een ongedwongen avond voor iedereen.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Fotografie</h4>
+          <p>Op de trouwdag is een professionele fotograaf aanwezig. Geniet met jullie ogen — de mooiste momenten worden vastgelegd.</p>
+        </div>
+        <div class="faq-item" style="grid-column: 1 / -1;">
+          <h4>Cadeaus</h4>
+          <p>Jullie aanwezigheid is het mooiste cadeau dat we ons kunnen wensen. Echt waar — we vragen niets meer dan dat jullie er zijn om samen te lachen, te dansen en te genieten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ RSVP ═══════════════════ -->
+  <section class="section rsvp" id="rsvp">
+    <div class="rsvp-bg"></div>
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">Laat het ons weten</p>
+        <h2 class="section-title">RSVP</h2>
+        <span class="ornament"></span>
+        <p class="section-subtitle">
+          We kijken zo uit naar dit weekend samen. Laat ons hieronder weten of je erbij bent!
+        </p>
+      </div>
+
+      <!-- Replace YOUR_FORMSPREE_ID with your Formspree endpoint -->
+      <form class="rsvp-form reveal" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+
+        <div class="form-group">
+          <label for="name">Volledige naam</label>
+          <input type="text" id="name" name="name" required placeholder="Je voor- en achternaam">
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mailadres</label>
+          <input type="email" id="email" name="email" required placeholder="je@email.nl">
+        </div>
+
+        <div class="form-group">
+          <label>Aanwezigheid</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="attendance" value="Ja, ik ben erbij!" required>
+              <span>Ja, ik ben erbij!</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="attendance" value="Helaas kan ik niet komen">
+              <span>Helaas, ik kan niet</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="dietary">Dieetwensen of allergieën</label>
+          <textarea id="dietary" name="dietary" placeholder="Laat het ons weten als je allergieën of dieetwensen hebt" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Een berichtje voor ons (optioneel)</label>
+          <textarea id="message" name="message" placeholder="We lezen alles met een grote glimlach..." rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Versturen</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer class="footer">
+    <p class="footer-names">Julie <em class="footer-heart">&</em> Maarten</p>
+    <p class="footer-info">5 Juni 2027 <em class="footer-heart">·</em> Patti, Sicilië</p>
+  </footer>
+
+  <!-- ═══════════════════ JAVASCRIPT ═══════════════════ -->
+  <script>
+    // --- Navbar scroll effect ---
+    const navbar = document.getElementById('navbar');
+    const heroSection = document.getElementById('hero');
+
+    function handleNavScroll() {
+      if (window.scrollY > 80) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', handleNavScroll, { passive: true });
+
+    // --- Mobile menu ---
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close mobile nav on link click
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // --- Scroll reveal ---
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // --- Smooth scroll for nav links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          const offset = 72;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
