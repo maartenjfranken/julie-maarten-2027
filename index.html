@@ -25,8 +25,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maarten & Julie · 3–6 Juni 2027 · Sicilië</title>
-  <meta name="description" content="Julie en Maarten trouwen op 3–6 juni 2027 in Pizzo dell'Ovo, Patti, Sicilië.">
+  <title>Save the Date · Maarten & Julie · 3–6 Juni 2027 · Sicilië</title>
+  <meta name="description" content="Julie en Maarten trouwen op 3–6 juni 2027 in Pizzo dell'Ovo, Patti, Sicilië. Bewaar de datum!">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -752,275 +752,26 @@
       .venue-grid .venue-img { height: 220px; }
     }
 
-    /* ═══════════════════════════════════════
-       PHOTO GALLERY — COMPACT STRIP + LIGHTBOX
-    ═══════════════════════════════════════ */
-    .gallery {
-      background: var(--cream);
-    }
-
-    .gallery-strip {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .gallery-strip .gallery-item-tall {
-      grid-row: span 2;
-    }
-
-    .gallery-item {
-      overflow: hidden;
-      border-radius: 3px;
-      position: relative;
-      cursor: pointer;
-      aspect-ratio: 1;
-    }
-
-    .gallery-item-tall {
-      overflow: hidden;
-      border-radius: 3px;
-      position: relative;
-      cursor: pointer;
-    }
-
-    .gallery-item img,
-    .gallery-item-tall img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.7s ease, filter 0.4s ease;
-      display: block;
-    }
-
-    .gallery-item:hover img,
-    .gallery-item-tall:hover img {
-      transform: scale(1.06);
-      filter: brightness(1.05);
-    }
-
-    .gallery-item::after,
-    .gallery-item-tall::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(58,54,50,0);
-      transition: background 0.4s ease;
-      pointer-events: none;
-    }
-
-    .gallery-item:hover::after,
-    .gallery-item-tall:hover::after {
-      background: rgba(58,54,50,0.08);
-    }
-
-    .gallery-expand-hint {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 2;
-    }
-
-    .gallery-expand-hint svg {
-      width: 22px;
-      height: 22px;
-      stroke: #fff;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
-    }
-
-    .gallery-item:hover .gallery-expand-hint,
-    .gallery-item-tall:hover .gallery-expand-hint {
-      opacity: 1;
-    }
-
-    /* Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(30, 27, 24, 0.94);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(6px);
-    }
-
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox-img-wrap {
-      max-width: 88vw;
-      max-height: 88vh;
-      position: relative;
-    }
-
-    .lightbox-img-wrap img {
-      max-width: 88vw;
-      max-height: 88vh;
-      object-fit: contain;
-      border-radius: 3px;
-      display: block;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: -2.5rem;
-      right: 0;
-      background: none;
-      border: none;
-      color: rgba(255,255,255,0.7);
+    .welcome-cta {
+      display: inline-block;
+      margin-top: 1.8rem;
       font-family: var(--font-sans);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-
-    .lightbox-close:hover { color: #fff; }
-
-    .lightbox-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #fff;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background 0.3s;
-      font-size: 1rem;
-    }
-
-    .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
-    .lightbox-nav.prev { right: calc(100% + 1.5rem); }
-    .lightbox-nav.next { left: calc(100% + 1.5rem); }
-
-    .lightbox-counter {
-      position: absolute;
-      bottom: -2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: var(--font-sans);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.4);
-    }
-
-    @media (max-width: 768px) {
-      .gallery-strip {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      .gallery-strip .gallery-item-tall { grid-row: span 1; }
-      .lightbox-nav { display: none; }
-    }
-
-    .gallery-caption {
-      text-align: center;
-      margin-top: 2rem;
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-style: italic;
-      color: var(--warm-gray-light);
-    }
-
-    /* ═══════════════════════════════════════
-       TROUWPERSONEEL
-    ═══════════════════════════════════════ */
-    .team {
-      background: var(--ivory);
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    /* Last row: 3 items — center them */
-    .team-card:nth-child(5) { grid-column: 1; }
-    .team-card:nth-child(5),
-    .team-card:nth-child(6),
-    .team-card:nth-child(7) {
-      grid-column: auto;
-    }
-
-    /* On the second row of 3, push them to center */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    @media (max-width: 700px) {
-      .team-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    .team-card {
-      text-align: center;
-    }
-
-    .team-avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background: var(--cream);
-      border: 1px solid var(--sand);
-      margin: 0 auto 1.2rem;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 2rem;
+      font-size: 0.68rem;
       font-weight: 300;
-      color: var(--warm-gray);
-    }
-
-    .team-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .team-role {
-      font-family: var(--font-sans);
-      font-size: 0.62rem;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--terracotta);
-      margin-bottom: 0.4rem;
+      border-bottom: 1px solid var(--terracotta-light);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
     }
-
-    .team-name {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--charcoal);
-      margin-bottom: 0.4rem;
+    .welcome-cta:hover {
+      color: var(--terracotta-deep);
+      border-color: var(--terracotta-deep);
     }
-
-    .team-note {
-      font-size: 0.85rem;
-      color: var(--warm-gray);
-      line-height: 1.7;
-      font-style: italic;
+    .welcome-cta::after {
+      content: ' →';
+      letter-spacing: 0;
     }
 
     /* ═══════════════════════════════════════
@@ -1381,6 +1132,70 @@
     }
 
     /* ═══════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════ */
+    .faq {
+      background: var(--cream);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--ivory);
+      padding: 1.8rem 2rem;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .faq-item h4 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: var(--warm-gray);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 700px) {
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════
+       STD NOTICE BANNER
+    ═══════════════════════════════════════ */
+    .std-notice {
+      background: var(--cream);
+      border-bottom: 1px solid var(--sand);
+      text-align: center;
+      padding: 0.7rem 2rem;
+      position: relative;
+      z-index: 999;
+    }
+    .std-notice p {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+    .std-notice strong {
+      color: var(--terracotta);
+      font-weight: 400;
+    }
+
+    /* ═══════════════════════════════════════
        RESPONSIVE POLISH
     ═══════════════════════════════════════ */
     @media (max-width: 768px) {
@@ -1400,8 +1215,9 @@
       <li class="nav-logo-item"><a href="#" class="nav-logo">M & J</a></li>
       <li class="nav-divider"></li>
       <li><a href="#locatie">Locatie</a></li>
-      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#reizen">Reizen</a></li>
       <li><a href="#rsvp">RSVP</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1412,8 +1228,14 @@
     <a href="#welkom">Welkom</a>
     <a href="#weekend">Het Weekend</a>
     <a href="#locatie">Locatie</a>
-    <a href="#faq">FAQ</a>
+    <a href="#reizen">Reizen</a>
     <a href="#rsvp">RSVP</a>
+    <a href="#faq">FAQ</a>
+  </div>
+
+  <!-- ═══════════════════ STD NOTICE ═══════════════════ -->
+  <div class="std-notice">
+    <p><strong>Save the Date</strong> · Meer details volgen naarmate de datum naderbij komt</p>
   </div>
 
   <!-- ═══════════════════ HERO ═══════════════════ -->
@@ -1439,12 +1261,9 @@
       <h2 class="section-title">Wat fijn dat jullie er zijn</h2>
       <span class="ornament"></span>
       <div class="welcome-text">
-        <p>Lieve vrienden en familie — wij kunnen niet wachten om samen met jullie ons geluk te vieren op de mooiste plek die we kennen. Vier dagen lang verblijven we met z'n allen in een prachtige villa op Sicilië, omringd door olijfbomen, met de zee aan onze voeten.</p>
+        <p>Wij nodigen jullie van harte uit voor ons huwelijk op <strong style="color: var(--charcoal);">zaterdag 5 juni 2027</strong>. En omdat dit meer dan één dag waard is, willen we jullie ook van harte uitnodigen het hele weekend bij ons te verblijven — van <strong style="color: var(--charcoal);">donderdag 3 tot en met zondag 6 juni</strong> — in een prachtige villa aan de kust van Sicilië, omringd door olijfbomen en met de zee aan onze voeten.</p>
         <p>Geen haast, geen drukte — gewoon de mensen die ons het dierbaarst zijn, samen aan lange tafels in de Siciliaanse zon. Dit wordt het mooiste feest van ons leven, en het betekent alles dat jullie erbij zijn.</p>
-        <p style="margin-top:1.2rem; font-style:normal; font-size:0.9rem; color: var(--warm-gray); border-top: 1px solid var(--sand-light); padding-top: 1.2rem;">
-          <strong style="font-family: var(--font-sans); font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color: var(--terracotta); font-weight:400;"><strong>RSVP</strong></strong><br>
-          We kijken zo uit naar dit weekend samen. Laat ons je onderaan de site weten of je erbij bent?
-        </p>
+        <a href="#rsvp" class="welcome-cta">Laat weten of je erbij bent</a>
       </div>
     </div>
   </section>
@@ -1490,12 +1309,7 @@
           <div class="day-content">
             <h3>De Grote Dag</h3>
             <p class="day-date">Zaterdag 5 juni</p>
-            <p>De dag waar alles om draait — ons huwelijk!</p>
-            <ul class="event-list">
-              <li><strong>Late ochtend</strong> — Ceremonie in de tuinen van de villa</li>
-              <li><strong>13:00 – 16:00</strong> — Feestelijke Siciliaanse lunch aan lange tafels (inclusief voor iedereen)</li>
-              <li><strong>16:00 – laat</strong> — Drankjes, dans en live muziek (ook inclusief)</li>
-            </ul>
+            <p>De dag waar alles om draait — ons huwelijk! Ceremonie, een feestelijke Siciliaanse lunch en dans tot in de late uurtjes. Alles inclusief voor iedereen. Meer details volgen.</p>
           </div>
         </div>
 
@@ -1584,54 +1398,16 @@
             title="Locatie Pizzo dell'Ovo, Patti, Sicilië"
             width="100%"
             height="400"
-            style="border:0; display:block; filter: saturate(0.7) sepia(0.25) brightness(1.04);"
+            style="border:0; display:block; filter: grayscale(0.85) sepia(0.18) brightness(0.97) contrast(0.95);"
             loading="lazy"
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3130.5!2d14.9533!3d38.1395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1319e8b5b5b5b5b5%3A0x0!2sPizzo+dell%27Ovo%2C+Patti%2C+98066+ME%2C+Itali%C3%AB!5e0!3m2!1snl!2snl!4v1700000000000!5m2!1snl!2snl&q=Pizzo+dell%27Ovo+Patti+Sicilia&center=38.1395,14.9533&zoom=14&maptype=roadmap">
+            src="https://maps.google.com/maps?q=38.1395,14.9533&z=15&output=embed&hl=nl">
           </iframe>
           <div class="map-pin-label">
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" fill="var(--terracotta)" opacity="0.8"/></svg>
             <span>Pizzo dell'Ovo · Patti, Sicilië</span>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ FAQ ═══════════════════ -->
-  <section class="section faq" id="faq">
-    <div class="section-wide">
-      <div class="reveal">
-        <p class="section-label">Goed om te weten</p>
-        <h2 class="section-title">Veelgestelde Vragen</h2>
-        <span class="ornament"></span>
-      </div>
-
-      <div class="faq-grid reveal">
-        <div class="faq-item">
-          <h4>Verblijf</h4>
-          <p>Alle koppels hebben een eigen kamer, daarnaast heeft bijna iedereen een ook eigen badkamer. </p>
-        </div>
-        <div class="faq-item">
-          <h4>Dresscode</h4>
-          <p><strong>Summer Chic</strong> — denk aan een elegant zomertuinfeest. Linnen pakken, luchtige midi-jurken, of creatieve cocktailstijl. Stijlvol maar relaxed.</p>
-        </div>
-        <div class="faq-item">
-          <h4>Eten & Drinken</h4>
-          <p>Op de trouwdag (zaterdag) is alles inbegrepen: een feestelijke Siciliaanse lunch én drankjes tot in de late uurtjes — voor iedereen. Geef dieetwensen of allergieën door via het RSVP-formulier hieronder.</p>
-        </div>
-        <div class="faq-item">
-          <h4>Weer</h4>
-          <p>Begin juni is het heerlijk op Sicilië — verwacht 23 tot 28°C, volop zon en lange, warme avonden. Vergeet je zonnebrand niet!</p>
-        </div>
-        <div class="faq-item">
-          <h4>Vervoer op Sicilië</h4>
-          <p>Een huurauto is verreweg het handigst, ook een transfer is mogelijk. De villa ligt buiten het dorp; openbaar vervoer is beperkt. Meerdere gasten rijden vanuit hetzelfde vliegveld — misschien kun je samen rijden. Geef het door via het RSVP-formulier.</p>
-        </div>
-        <div class="faq-item">
-          <h4>Fotografie</h4>
-          <p>Op de trouwdag is een professionele fotograaf aanwezig. We delen de foto's achteraf met iedereen.</p>
         </div>
       </div>
     </div>
@@ -1679,13 +1455,8 @@
         </div>
 
         <div class="form-group">
-          <label for="dietary">Dieetwensen of allergieën</label>
+          <label for="dietary">Dieetwensen of allergieën (optioneel)</label>
           <textarea id="dietary" name="dietary" placeholder="Laat het ons weten als je allergieën of dieetwensen hebt (bijv. vegetarisch, glutenvrij, noten-allergie)" rows="3"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="carpool">Vervoer & carpool (optioneel)</label>
-          <textarea id="carpool" name="carpool" placeholder="Van welk vliegveld kom je? Wil je graag samen rijden met anderen? Laat het weten!" rows="2"></textarea>
         </div>
 
         <div class="form-group">
@@ -1695,6 +1466,44 @@
 
         <button type="submit" class="submit-btn">Versturen</button>
       </form>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FAQ ═══════════════════ -->
+  <section class="section faq" id="faq">
+    <div class="section-wide">
+      <div class="reveal">
+        <p class="section-label">Goed om te weten</p>
+        <h2 class="section-title">Veelgestelde Vragen</h2>
+        <span class="ornament"></span>
+      </div>
+
+      <div class="faq-grid reveal">
+        <div class="faq-item">
+          <h4>Verblijf</h4>
+          <p>Alle koppels hebben een eigen kamer, daarnaast heeft bijna iedereen een ook eigen badkamer.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Dresscode</h4>
+          <p><strong>Summer Chic</strong> — denk aan een elegant zomertuinfeest. Linnen pakken, luchtige midi-jurken, of creatieve cocktailstijl. Stijlvol maar relaxed.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Eten & Drinken</h4>
+          <p>Op de trouwdag (zaterdag) is alles inbegrepen: een feestelijke Siciliaanse lunch én drankjes tot in de late uurtjes — voor iedereen. Geef dieetwensen of allergieën door via het RSVP-formulier.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Weer</h4>
+          <p>Begin juni is het heerlijk op Sicilië — verwacht 23 tot 28°C, volop zon en lange, warme avonden. Vergeet je zonnebrand niet!</p>
+        </div>
+        <div class="faq-item">
+          <h4>Vervoer op Sicilië</h4>
+          <p>Een huurauto is verreweg het handigst, ook een transfer is mogelijk. De villa ligt buiten het dorp; openbaar vervoer is beperkt. Meerdere gasten rijden vanuit hetzelfde vliegveld — misschien kun je samen rijden. Geef het door via het RSVP-formulier.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Fotografie</h4>
+          <p>Op de trouwdag is een professionele fotograaf aanwezig. We delen de foto's achteraf met iedereen.</p>
+        </div>
+      </div>
     </div>
   </section>
 
